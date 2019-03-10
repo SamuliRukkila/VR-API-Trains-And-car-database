@@ -1,0 +1,54 @@
+
+<div class='container-fluid bg-success pl-5 shadow'>
+  <p class='text-white pt-2 pb-2'>Aseman junatiedot</p>
+</div>
+
+<div class='container pl-5 mt-5'>
+  <p class='font-weight-bold'>Hae aseman nimellä</p>
+  <input class='form-control' name='searchBar' #searchBar type='search' [value]='selectedStation'
+    placeholder='Syötä kaupunki' (input)='searchStations(searchBar.value)'>
+    <div>
+      <ul class='navbar-nav rounded' *ngFor='let station of searchedStations'>
+        <a href='#'>
+          <li class='nav-item p-3 bg-light' (click)='searchTrains(station.code, station.name)'> {{ station.name }} </li>
+        </a>
+      </ul>
+    </div>
+</div>
+
+<div class='container mt-5'>
+  <div class='mb-3'>
+    <button class='btn' [disabled]='showTrainsArriving' [class.btn-primary]='showTrainsArriving' (click)='toggle()'>Saapuvat</button> 
+    <button class='btn' [disabled]='!showTrainsArriving' [class.btn-primary]='!showTrainsArriving' (click)='toggle()'>Lähtevät</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Juna</th>
+        <th>Lähtöasema</th>
+        <th>Pääteasema</th>
+        <th *ngIf='showTrainsArriving'>Saapuu</th>
+        <th *ngIf='!showTrainsArriving'>Lähtee</th>
+      </tr>
+    </thead>
+    <tbody *ngIf='showTrainsArriving'>
+      <tr *ngFor='let train of arrivedTrains'>
+        <td>{{ train.name }}</td>
+        <td>{{ convertStation(train.starting_station) }}</td>
+        <td>{{ convertStation(train.ending_station) }}</td>
+        <td *ngIf='!train.cancelled'>{{ train.time }} <small *ngIf='train.actual_time'>({{ train.actual_time }})</small></td>
+        <td *ngIf='train.cancelled'><del>{{ train.time }}</del>Peruutettu</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf='!showTrainsArriving'>
+      <tr *ngFor='let train of leavingTrains'>
+        <td>{{ train.name }}</td>
+        <td>{{ convertStation(train.starting_station) }}</td>
+        <td>{{ convertStation(train.ending_station) }}</td>
+        <td *ngIf='!train.cancelled'>{{ train.time }}</td>
+        <td *ngIf='train.cancelled'><del>{{ train.time }}</del>Peruutettu</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf='!trainsFound' class='alert alert-danger'>Junia ei löytynyt hakemalta asemalta</div>
+</div>
