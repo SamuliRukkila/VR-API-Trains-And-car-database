@@ -1,4 +1,4 @@
-# FrontendAssingment
+# Frontend-assignment
 
 Tehty Angular 7.2.2. Käyttää hyväkseen [VR:n julkista API:a](https://www.digitraffic.fi/rautatieliikenne/)
 
