@@ -4,7 +4,7 @@ Tehty Angular 7.2.2. Käyttää hyväkseen [VR:n julkista API:a](https://www.dig
 
 ## Kuinka kokeilen
 
-Mene hakemistoon ja anna komento ```ng s -o```
+Mene hakemistoon ja anna komento ```ng s -o```. Selain avaa localhost osoitteen (localhost:4200).
 
 ## Tehty lähdekoodi
 
