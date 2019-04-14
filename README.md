@@ -6,4 +6,4 @@ Frontend assignment about VR-API-Trains schelude times
 
 ## Car-database
 
-Database about cars CRUD-elements with ```Ǹode.js, Express & Mongoose```.
+Database about cars CRUD-elements with ```Node.js, Express & Mongoose```.
