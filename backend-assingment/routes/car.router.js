@@ -17,6 +17,6 @@ module.exports = app => {
   app.get('/car/getcar/:platenumber', Car.getCar);
 
   // Get all cars (filter by release year, name and model if wanted)
-  app.get('/car/carlist/:min?/:max?/:name?/:model?', Car.getCarList);
+  app.get('/car/carlist/:name?/:model?/:min?/:max?/', Car.getCarList);
 
 }

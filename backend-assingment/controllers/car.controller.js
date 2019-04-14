@@ -103,16 +103,26 @@ const CarController = {
 
   // Get a list of cars (according to filters)
   getCarList: (req, res) => {
-    Car.find({
-      // Search by name, if name-parameter is not given, search every car
-      name: req.params.name ? new RegExp(req.params.name, 'i') : new RegExp('', 'i'),
-      // Search by model, if model-parameter is not given, search every car
-      name: req.params.model ? new RegExp(req.params.model, 'i') : new RegExp('', 'i'),
-      releaseYear: { 
-        $gt: req.params.min ? req.params.min : 0, 
-        $lt: req.params.max ? req.params.max : 2100 
-      },
-    }).then(cars => {
+
+    let filters = {
+      releaseYear: {
+        $gt: 0,
+        $lt: 2100
+      }
+    };
+
+    const min = req.params.min;
+    const max = req.params.max;
+    const name = req.params.name === 'null' ? '' : req.params.name;
+    const model = req.params.model === 'null' ? '' : req.params.model;
+
+    if (min) filters.releaseYear.$gt = min;
+    if (max) filters.releaseYear.$lt = max;
+    if (name) filters.name = new RegExp(name, 'i');
+    if (model) filters.model = new RegExp(model, 'i');
+
+    console.log(filters);
+    Car.find(filters).then(cars => {
       if (cars.length < 1) {
         return res.status(404).send({
           err: 'Yhtään autoa ei löydetty'

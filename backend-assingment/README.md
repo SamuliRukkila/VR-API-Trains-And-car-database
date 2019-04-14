@@ -80,27 +80,38 @@ GET-kysely. Jos haluat hakea kaikki autot, älä anna parametreja ollenkaan.
 
 **Parametrit:**
 
-```min``` : Auton vuosimalli minimi
-
-```max``` : Auton vuosimalli maksimi
-
 ```name``` : Auton nimi
 
 ```model``` : Auton malli
 
-Esimerkki. ```http://localhost:3000/car/carlist/1994/2002/alfa Romeo```, joka palauttaa:
+```min``` : Auton vuosimalli minimi
+
+```max``` : Auton vuosimalli maksimi
+
+Esimerkki. ```http://localhost:3000/car/carlist/alfa Romeo/null/1990/1995```, joka palauttaa:
 
 ```JSON
 [
     {
-        "_id": "5cb2fe756dd858388038fe20",
-        "name": "Nissan",
-        "model": "Almera",
-        "plateNumber": "CCC-83F",
-        "releaseYear": 1995,
-        "checkupDate": "2017-10-09T00:00:00.000Z",
-        "engineSize": "1.4",
-        "enginePower": "8V (120Hp)",
+        "_id": "5cb2fe756dd858388038fe1b",
+        "name": "Alfa Romeo",
+        "model": "Alfa Romeo",
+        "plateNumber": "EFQ-83F",
+        "releaseYear": 1994,
+        "checkupDate": "2019-12-09T00:00:00.000Z",
+        "engineSize": "2.5",
+        "enginePower": "24V (320Hp)",
+        "__v": 0
+    },
+    {
+        "_id": "5cb2fe756dd858388038fe1c",
+        "name": "Alfa Romeo",
+        "model": "158",
+        "plateNumber": "EFG-83F",
+        "releaseYear": 1994,
+        "checkupDate": "2019-12-09T00:00:00.000Z",
+        "engineSize": "2.1",
+        "enginePower": "24V (320Hp)",
         "__v": 0
     }
 ]
