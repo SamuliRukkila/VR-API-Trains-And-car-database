@@ -2,6 +2,8 @@ const Car = require('../controllers/car.controller');
 
 module.exports = app => {
 
+  app.post('/car/insertcars', Car.insertCars);
+
   // Add new car
   app.post('/car/addcar', Car.addNewCar);
 

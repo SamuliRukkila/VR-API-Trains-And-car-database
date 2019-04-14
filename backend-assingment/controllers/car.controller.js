@@ -1,6 +1,17 @@
 const Car = require('../models/car');
+const mockCars = require('../mock-data-cars');
 
 const CarController = {
+
+  insertCars: (req, res) => {
+    Car.insertMany(mockCars)
+      .then(cars => {
+        return res.send('Created mock-cars');
+      }).catch(err => {
+        console.error(err);
+        return res.status(500).send(err);
+      })
+  },
 
   // Adds a new car
   addNewCar: (req, res) => {
