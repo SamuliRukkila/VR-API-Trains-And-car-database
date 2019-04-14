@@ -24,3 +24,5 @@ app.use(logger('dev'));
 app.get('/', (req, res) => {
   res.send('Nothing to see here.');
 });
+
+require('./routes/car.router.js')(app);
